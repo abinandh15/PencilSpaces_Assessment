@@ -1,0 +1,48 @@
+<div class="main-container">
+  <h1>Pencil Spaces Chess</h1>
+  
+  <div class="game-info">
+    <p>Current Turn: <strong>{{ currentPlayer | titlecase }}</strong></p>
+    <button 
+      class="new-game-btn" 
+      (click)="onCreateNewGame()"
+      [disabled]="false">
+      Create New Game
+    </button>
+  </div>
+
+  <div class="chess-container">
+    <div class="player-section">
+      <h2>Player 1 (White)</h2>
+      <div class="iframe-container">
+        <iframe 
+          #iframe1
+          [src]="safeIframeUrl"
+          frameborder="0"
+          width="400"
+          height="400"
+          >
+        </iframe>
+      </div>
+    </div>
+
+    <div class="player-section">
+      <h2>Player 2 (Black)</h2>
+      <div class="iframe-container">
+        <iframe 
+          #iframe2
+          [src]="safeIframeUrl"
+          frameborder="0"
+          width="400"
+          height="400"
+          >
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="game-status" *ngIf="gameOver">
+    <h2>Game Over!</h2>
+    <p>Winner: {{ winner }}</p>
+  </div>
+</div>

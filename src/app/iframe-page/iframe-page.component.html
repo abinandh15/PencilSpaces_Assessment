@@ -1,0 +1,24 @@
+<div class="iframe-container">
+  <div class="board-info">
+    <p class="player-label">{{ getPlayerLabel() }}</p>
+    <p class="turn-indicator" [class.active]="!isDisabled && !gameOver">
+      {{ getTurnStatus() }}
+    </p>
+  </div>
+  
+  <div class="chess-board-container">
+    <ngx-chess-board
+      #board
+      [size]="boardSize"
+      [showCoords]="true"
+      [lightDisabled]="isDisabled"
+      [darkDisabled]="isDisabled"
+      [dragDisabled]="isDisabled"
+      (moveChange)="onMoveChange($event)">
+    </ngx-chess-board>
+  </div>
+  
+  <div class="game-status" *ngIf="gameOver">
+    <p>Game Over!</p>
+  </div>
+</div>
